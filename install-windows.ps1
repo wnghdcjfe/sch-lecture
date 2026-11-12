@@ -1,8 +1,8 @@
-﻿# Claude Code 설치 스크립트 (Windows PowerShell 5.1 / PowerShell 7)
+# Claude Code 설치 스크립트 (Windows PowerShell 5.1 / PowerShell 7)
 # 사용법 (PowerShell에서 실행):
 #   irm https://raw.githubusercontent.com/wnghdcjfe/sch-lecture/main/install-windows.ps1 | iex
 # 또는 파일을 받은 경우:
-#   powershell -ExecutionPolicy Bypass -File .\install-windows.ps1
+#   Get-Content .\install-windows.ps1 -Raw -Encoding UTF8 | iex
 
 & {
     $ErrorActionPreference = 'Stop'
