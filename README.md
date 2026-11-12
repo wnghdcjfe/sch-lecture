@@ -4,13 +4,40 @@ Claude Code CLI를 설치하면 터미널에서 `claude` 명령어를 바로 사
 
 현재 공식 권장 설치 방식은 **네이티브 설치(Native Install)** 이며, Node.js나 npm 없이도 설치할 수 있습니다.
 
-## 목차
+## ⚡ 빠른 설치 (권장)
+
+이 저장소의 설치 스크립트는 공식 설치 + Git 확인 + PATH 등록 + 설치 확인까지 한 번에 처리합니다.
+
+### Windows
+
+**PowerShell**을 열고 실행합니다. (명령 프롬프트 `cmd`가 아닙니다. 시작 메뉴에서 "PowerShell" 검색)
+
+```powershell
+irm https://raw.githubusercontent.com/wnghdcjfe/sch-lecture/main/install-windows.ps1 | iex
+```
+
+### macOS / Linux / WSL
+
+**터미널**을 열고 실행합니다. (`sudo` 를 붙이지 마세요)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/wnghdcjfe/sch-lecture/main/install-mac.sh | bash
+```
+
+`[ OK ] 설치 완료: x.x.x (Claude Code)` 가 출력되면 성공입니다. **터미널을 새로 연 뒤** `claude` 를 입력하세요.
+
+---
+
+## 수동 설치
+
+### 목차
 
 1. [Claude Code CLI 설치](#1-claude-code-cli-설치)
 2. [설치 확인](#2-설치-확인)
 3. [Claude 실행](#3-claude-실행)
-4. [`claude` 명령어를 찾지 못하는 경우](#4-claude-명령어를-찾지-못하는-경우)
-5. [업데이트](#5-업데이트)
+4. [자주 발생하는 오류](#4-자주-발생하는-오류)
+5. [`claude` 명령어를 찾지 못하는 경우](#5-claude-명령어를-찾지-못하는-경우)
+6. [업데이트](#6-업데이트)
 
 ---
 
@@ -50,7 +77,18 @@ claude
 
 > 최초 실행 시 Anthropic 계정 인증이 필요할 수 있습니다.
 
-## 4. `claude` 명령어를 찾지 못하는 경우
+## 4. 자주 발생하는 오류
+
+| 증상 | 원인 / 해결 |
+| --- | --- |
+| `'irm'은(는) 내부 또는 외부 명령...이 아닙니다` | `cmd`에서 실행함 → **PowerShell**에서 실행 |
+| 오류 후 PowerShell 창이 바로 닫힘 | 공식 스크립트의 `exit` 때문 → 위 **빠른 설치** 스크립트 사용 |
+| `SSL/TLS 보안 채널을 만들 수 없습니다` | 구형 Windows TLS 설정 → 빠른 설치 스크립트가 TLS 1.2를 자동 적용 |
+| `Claude Code on Windows requires git-bash` | Git 미설치 → [Git for Windows](https://git-scm.com/download/win) 설치 (빠른 설치 스크립트는 winget으로 자동 설치) |
+| `claude: command not found` / `'claude' 용어가 ... 인식되지 않습니다` | PATH 미등록 → 아래 5번 참고, 또는 **터미널 새로 열기** |
+| macOS `Permission denied` / root 경로에 설치됨 | `sudo` 로 실행함 → `sudo` 없이 다시 실행 |
+
+## 5. `claude` 명령어를 찾지 못하는 경우
 
 설치는 완료됐지만 명령어가 인식되지 않는다면 **PATH 문제**일 가능성이 높습니다.
 
@@ -81,7 +119,7 @@ source ~/.zshrc
 claude --version
 ```
 
-## 5. 업데이트
+## 6. 업데이트
 
 ```bash
 claude update
